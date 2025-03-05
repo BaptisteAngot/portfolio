@@ -1,0 +1,38 @@
+name: Déploiement FTP sur OVH
+
+on:
+  push:
+    branches:
+      - main  # Déploiement automatique sur la branche main
+
+jobs:
+  deploy:
+    name: Déployer sur OVH
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer les dépendances
+        run: npm install
+
+      - name: Construire le projet
+        run: npm run build
+
+      - name: Déployer via FTP (incluant .htaccess)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/  # Fichiers à déployer
+          server-dir: /www/    # Répertoire distant sur OVH
+          include: |
+            .htaccess
+            **
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/src/**
