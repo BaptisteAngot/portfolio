@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import sitemap from 'vite-plugin-sitemap';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,6 +11,12 @@ export default defineConfig({
         targets: [
           { src: 'public/.htaccess', dest: '' } // Copie .htaccess dans dist/
         ]
+      }),
+      sitemap({
+        hostname: 'https://www.baptisteangot.com',
+        changefreq: 'daily',
+        lastmod: new Date(),
+        priority: 0.8,
       })
   ],
   optimizeDeps: {
