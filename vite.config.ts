@@ -9,14 +9,15 @@ export default defineConfig({
       react(),
       viteStaticCopy({
         targets: [
-          { src: 'public/.htaccess', dest: '' } // Copie .htaccess dans dist/
+          { src: 'public/.htaccess', dest: '' }, // Copie .htaccess dans dist/
+          { src: 'public/robots.txt', dest: '' } // Copie .htaccess dans dist/
         ]
       }),
       sitemap({
-        hostname: 'https://www.baptisteangot.com',
-        changefreq: 'daily',
+        hostname: 'https://www.angotbaptiste.com',
+        changefreq: 'weekly',
         lastmod: new Date(),
-        priority: 0.8,
+        priority: 1
       })
   ],
   optimizeDeps: {
