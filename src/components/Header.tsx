@@ -40,7 +40,7 @@ const Header = () => {
                 { href: "home", label: "Accueil" },
                 { href: "about", label: "À propos" },
                 { href: "skills", label: "Compétences" },
-                { href: "experience", label: "Expérience" },
+                { href: "experience", label: "Expériences" },
                 { href: "contact", label: "Contact" }
               ].map((item, index) => (
                   <li key={index}>
@@ -95,7 +95,7 @@ const Header = () => {
                   { href: "home", label: "Accueil" },
                   { href: "about", label: "À propos" },
                   { href: "skills", label: "Compétences" },
-                  { href: "experience", label: "Expérience" },
+                  { href: "experience", label: "Expériences" },
                   { href: "contact", label: "Contact" }
                 ].map((item, index) => (
                     <li key={index}>
